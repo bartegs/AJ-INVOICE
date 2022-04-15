@@ -1,0 +1,31 @@
+$spacing: 5px;
+
+@for $i from 1 through 10 {
+  .m-#{$i} {
+    margin: $spacing * $i;
+  }
+
+  .mx-#{$i} {
+    margin: 0 $spacing * $i;
+  }
+
+  .my-#{$i} {
+    margin: $spacing * $i 0;
+  }
+
+  .mt-#{$i} {
+    margin-top: $spacing * $i;
+  }
+
+  .mr-#{$i} {
+    margin-right: $spacing * $i;
+  }
+
+  .mb-#{$i} {
+    margin-bottom: $spacing * $i;
+  }
+
+  .ml-#{$i} {
+    margin-left: $spacing * $i;
+  }
+}
