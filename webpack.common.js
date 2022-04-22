@@ -18,14 +18,13 @@ module.exports = {
       },
 
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.scss$/i,
         use: [
           "style-loader",
           {
             loader: "css-loader",
             options: {
               sourceMap: true,
-              modules: true,
             },
           },
           {
@@ -38,18 +37,23 @@ module.exports = {
             loader: "sass-loader",
             options: {
               sourceMap: true,
+              // additionalData: '@import "./src/scss/index";',
             },
           },
         ],
       },
 
       {
-        test: /\.(png|jpe?g|gif|svg|ico)$/i,
-        use: [
-          {
-            loader: "file-loader",
-          },
-        ],
+        test: /\.(jpe?g|png|gif|svg|ico)$/i,
+        type: "asset/resource",
+        // use: [
+        //   {
+        //     loader: "file-loader",
+        //     options: {
+        //       name: "[name].[ext]",
+        //     },
+        //   },
+        // ],
       },
     ],
   },

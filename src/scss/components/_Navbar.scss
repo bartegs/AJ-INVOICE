@@ -1,0 +1,48 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: $blue;
+  color: $white;
+  height: 60px;
+  font-size: $text-16;
+  z-index: 1;
+
+  @media (min-width: $screen-lg) {
+    height: 100px;
+  }
+
+  &::after {
+    content: "";
+    background-color: $blue;
+    width: 100%;
+    height: 60px;
+    position: absolute;
+    left: 0;
+    z-index: -1;
+
+    @media (min-width: $screen-lg) {
+      height: 100px;
+    }
+  }
+
+  &__container {
+    width: $content-width-sm;
+
+    @media (min-width: $screen-lg) {
+      width: $content-width-lg;
+    }
+  }
+
+  &__logo {
+    display: inline-block;
+    height: $logo-sm-y;
+    width: $logo-sm-x;
+    // margin: $spacing-x3 0;
+
+    @media (min-width: $screen-lg) {
+      height: $logo-lg-y;
+      width: $logo-lg-x;
+      // margin: $spacing-x4 0;
+    }
+  }
+}

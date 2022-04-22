@@ -1,7 +1,29 @@
 @import "./reset";
 @import "./variables";
-@import "./utils";
 @import "./text";
-@import "./components";
+@import "./utils";
+@import "./components/";
 
-// body {color: blue}
+#root {
+  width: 100vw;
+}
+
+body {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+.container {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  min-width: $content-width-xsm;
+  margin: 0 15px;
+  width: 100%;
+
+  @media (min-width: $screen-lg) {
+    width: $content-width-lg;
+  }
+}
