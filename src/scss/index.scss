@@ -20,7 +20,8 @@ body {
 
 .content {
   min-width: $content-width-xsm;
-  margin: 0 15px;
+  margin-left: $spacing-x3;
+  margin-right: $spacing-x3;
   width: 100%;
 
   @media (min-width: $screen-lg) {

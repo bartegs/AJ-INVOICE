@@ -1,0 +1,32 @@
+.invoice-generator {
+  display: flex;
+  background-color: $white;
+  box-shadow: $shadow;
+  margin-top: $spacing-x4;
+  justify-content: center;
+
+  &__content {
+    width: 250px;
+    margin: $spacing-x4;
+
+    @media (min-width: $screen-lg) {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      margin: $spacing-x8;
+    }
+  }
+
+  &__invoice {
+    align-self: center;
+  }
+
+  &__customer {
+    align-self: center;
+  }
+
+  &__buttons {
+    width: 250px;
+    display: flex;
+  }
+}
