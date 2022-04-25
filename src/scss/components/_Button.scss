@@ -1,0 +1,43 @@
+.button {
+  background: $white;
+  font-family: inherit;
+  font-weight: 700;
+  border-radius: 5px;
+  width: 100%;
+  transition: 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    color: white;
+  }
+
+  &--blue {
+    border: 2px solid $blue;
+    color: $blue;
+
+    &:hover {
+      background: $blue;
+    }
+  }
+
+  &--red {
+    border: 2px solid $red;
+    color: $red;
+
+    &:hover {
+      background: $red;
+    }
+  }
+
+  &--sm {
+    width: 100px;
+  }
+
+  &--md {
+    width: 150px;
+  }
+
+  &--lg {
+    width: 200px;
+  }
+}

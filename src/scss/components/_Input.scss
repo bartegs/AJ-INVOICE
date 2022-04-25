@@ -1,0 +1,41 @@
+.input {
+  background-color: $grey-light;
+  border: 0;
+  border-radius: 2px;
+  font-size: 16px;
+  font-family: inherit;
+  font-weight: 300;
+
+  &::placeholder {
+    color: $grey-dark;
+  }
+
+  &::input-placeholder {
+    color: $grey-dark;
+  }
+
+  &:focus {
+    outline: none;
+    border-bottom: 2px solid $red;
+  }
+
+  &--grey-underline {
+    border-bottom: 2px solid $grey;
+  }
+
+  &--blue-underline {
+    border-bottom: 2px solid $blue;
+  }
+
+  &--sm {
+    width: 150px;
+  }
+
+  &--md {
+    width: 230px;
+  }
+
+  &--lg {
+    width: 250px;
+  }
+}

@@ -37,12 +37,12 @@
     display: inline-block;
     height: $logo-sm-y;
     width: $logo-sm-x;
-    // margin: $spacing-x3 0;
+    margin-right: $spacing-x2;
 
     @media (min-width: $screen-lg) {
       height: $logo-lg-y;
       width: $logo-lg-x;
-      // margin: $spacing-x4 0;
+      margin-right: $spacing-x4;
     }
   }
 }
