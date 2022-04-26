@@ -5,12 +5,15 @@
   font-size: 16px;
   font-family: inherit;
   font-weight: 300;
-  margin-bottom: $spacing-x3;
   display: block;
 
-  @media (min-width: $screen-lg) {
-    margin-bottom: $spacing-x8;
-    display: inline-block;
+  &--invoice-data {
+    margin-bottom: $spacing-x3;
+
+    @media (min-width: $screen-lg) {
+      margin-bottom: $spacing-x8;
+      display: inline-block;
+    }
   }
 
   &::placeholder {

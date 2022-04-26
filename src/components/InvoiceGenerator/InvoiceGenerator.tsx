@@ -4,6 +4,7 @@ import useWindowWidth from "../../hooks/useWindowWidth";
 
 import Input from "../Input";
 import Button from "../Button";
+import InvoiceItem from "./InvoiceItem";
 
 export default function InvoiceGenerator(): JSX.Element {
   const { width } = useWindowWidth();
@@ -30,12 +31,13 @@ export default function InvoiceGenerator(): JSX.Element {
             setState={setInvoiceName}
             underlineColor="blue"
             size="lg"
-            additionalClasses={width >= 768 && "mr-14"}
+            additionalClasses={`${width >= 768 && "mr-14"} input--invoice-data`}
           />
           <Input
             placeholder="Select invoice date"
             name="invoice-date"
             id="invoice-date"
+            additionalClasses={"input--invoice-data"}
             value={invoiceDate}
             setState={setInvoiceDate}
             underlineColor="blue"
@@ -58,9 +60,8 @@ export default function InvoiceGenerator(): JSX.Element {
             setState={setCustomerFirstName}
             underlineColor="blue"
             size="lg"
-            additionalClasses={width >= 768 && "mr-15"}
+            additionalClasses={`${width >= 768 && "mr-15"} input--invoice-data`}
           />
-
           <Input
             placeholder="Type customer last name"
             name="customer-last-name"
@@ -69,9 +70,8 @@ export default function InvoiceGenerator(): JSX.Element {
             setState={setCustomerLastName}
             underlineColor="blue"
             size="lg"
-            additionalClasses={width >= 768 && "mr-14"}
+            additionalClasses={`${width >= 768 && "mr-14"} input--invoice-data`}
           />
-
           <Input
             placeholder="Type customer phone"
             name="customer-phone"
@@ -80,9 +80,8 @@ export default function InvoiceGenerator(): JSX.Element {
             setState={setCustomerPhone}
             underlineColor="blue"
             size="lg"
-            additionalClasses={width >= 768 && "mr-15"}
+            additionalClasses={`${width >= 768 && "mr-15"} input--invoice-data`}
           />
-
           <Input
             placeholder="Type customer email"
             name="customer-email"
@@ -91,26 +90,42 @@ export default function InvoiceGenerator(): JSX.Element {
             setState={setCustomerEmail}
             underlineColor="blue"
             size="lg"
+            additionalClasses={"input--invoice-data"}
           />
         </div>
-
-        <div className="invoice-generator__buttons">
-          <Button
-            text="Reset"
-            type="reset"
-            color="red"
-            additionalClasses="mr-2 flex-2"
-            onClick={() => {}}
-            isDisabled={false}
-          ></Button>
-          <Button
-            text="Generate invoice"
-            type="submit"
-            color="blue"
-            additionalClasses="flex-3"
-            onClick={() => {}}
-            isDisabled={false}
-          ></Button>
+        <InvoiceItem />
+        <div className="invoice-generator__new-item"></div>
+        <div className="invoice-generator__summary summary">
+          <div className="summary__item">
+            <span className="summary__name">SUBTOTAL:</span>
+            <span className="summary__value">£ 12030,00</span>
+          </div>
+          <div className="summary__item">
+            <span className="summary__name">VAT:</span>
+            <span className="summary__value">£ 2406,00</span>
+          </div>
+          <div className="summary__item">
+            <span className="summary__name">TOTAL:</span>
+            <span className="summary__value">£ 14436,00</span>
+          </div>
+          <div className="invoice-generator__buttons">
+            <Button
+              text="Reset"
+              type="reset"
+              color="red"
+              additionalClasses="mr-2 flex-2"
+              onClick={() => {}}
+              isDisabled={false}
+            ></Button>
+            <Button
+              text="Generate invoice"
+              type="submit"
+              color="blue"
+              additionalClasses="flex-4"
+              onClick={() => {}}
+              isDisabled={false}
+            ></Button>
+          </div>
         </div>
       </form>
     </section>

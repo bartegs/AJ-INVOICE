@@ -26,7 +26,32 @@
   }
 
   &__buttons {
-    width: 250px;
     display: flex;
+    margin-top: $spacing-x3;
+  }
+
+  &__new-item {
+    width: 40px;
+    height: 40px;
+    background-color: $blue;
+    margin-left: auto;
+    margin-bottom: $spacing-x6;
+  }
+
+  &__summary {
+    width: 250px;
+    margin-right: 0;
+    margin-left: auto;
+  }
+}
+
+.summary {
+  &__item {
+    display: flex;
+  }
+
+  &__value {
+    margin-right: 0;
+    margin-left: auto;
   }
 }

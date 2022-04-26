@@ -1,0 +1,41 @@
+.invoice-item {
+  background: $blue;
+  display: flex;
+  padding: $spacing-x2;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: $spacing-x3;
+
+  @media (min-width: $screen-lg) {
+    flex-direction: row;
+    padding: $spacing-x4;
+  }
+
+  &__number {
+    color: $white;
+    margin-bottom: $spacing-x2;
+
+    @media (min-width: $screen-lg) {
+      margin-bottom: 0;
+      margin-right: $spacing-x4;
+    }
+  }
+
+  &__inputs {
+    @media (min-width: $screen-lg) {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
+  &__buttons {
+    width: 64px;
+    height: 30px;
+    background: red;
+
+    @media (min-width: $screen-lg) {
+      margin-left: auto;
+      margin-right: 0;
+    }
+  }
+}

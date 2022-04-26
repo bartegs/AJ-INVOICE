@@ -4,7 +4,7 @@ import classnames from "classnames";
 interface InputProps {
   setState: React.Dispatch<React.SetStateAction<string>>;
   name: string;
-  value: string;
+  value: string | number;
   placeholder: string;
   id: string;
   additionalClasses?: string;
