@@ -4,7 +4,9 @@ import useWindowWidth from "../../hooks/useWindowWidth";
 
 import Input from "../Input";
 import Button from "../Button";
-import InvoiceItem from "./InvoiceItem";
+import Icon from "../Icon";
+
+import InvoiceItems from "./InvoiceItems";
 
 export default function InvoiceGenerator(): JSX.Element {
   const { width } = useWindowWidth();
@@ -18,6 +20,11 @@ export default function InvoiceGenerator(): JSX.Element {
   // function convertDigitIn(str) {
   //   return str.split("/").reverse().join("/");
   // }
+
+  const [serviceList, setServiceList] = React.useState([{ service: "a" }]);
+  const onNewBtnClick = () => {
+    setServiceList([...serviceList, { service: "" }]);
+  };
 
   return (
     <section className="content invoice-generator">
@@ -93,8 +100,17 @@ export default function InvoiceGenerator(): JSX.Element {
             additionalClasses={"input--invoice-data"}
           />
         </div>
-        <InvoiceItem />
-        <div className="invoice-generator__new-item"></div>
+        <InvoiceItems
+          serviceList={serviceList}
+          setServiceList={setServiceList}
+        />
+        <div
+          role="button"
+          onClick={onNewBtnClick}
+          className="invoice-generator__new-item"
+        >
+          <Icon icon="new" color="blue" size="lg" />
+        </div>
         <div className="invoice-generator__summary summary">
           <div className="summary__item">
             <span className="summary__name">SUBTOTAL:</span>

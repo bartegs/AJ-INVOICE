@@ -1,0 +1,67 @@
+.icon {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain !important;
+  display: inline-block;
+  cursor: pointer;
+
+  &--confirm {
+    background-image: url("../../assets/icons/confirm.svg");
+  }
+
+  &--remove {
+    background-image: url("../../assets/icons/remove.svg");
+  }
+
+  &--new {
+    background-image: url("../../assets/icons/new.svg");
+  }
+
+  &--white {
+    filter:
+      invert(100%) sepia(100%) saturate(1%) hue-rotate(78deg)
+      brightness(102%) contrast(102%);
+
+    &:hover {
+      filter:
+        invert(19%) sepia(99%) saturate(3500%) hue-rotate(341deg)
+        brightness(91%) contrast(97%);
+    }
+  }
+
+  &--blue {
+    filter:
+      invert(6%) sepia(69%) saturate(2254%) hue-rotate(200deg)
+      brightness(94%) contrast(98%);
+
+    &:hover {
+      filter: brightness(0) saturate(100%);
+      filter:
+        invert(19%) sepia(99%) saturate(3500%) hue-rotate(341deg)
+        brightness(91%) contrast(97%);
+    }
+  }
+
+  &--red {
+    filter:
+      invert(19%) sepia(99%) saturate(3500%) hue-rotate(341deg)
+      brightness(91%) contrast(97%);
+
+    &:hover {
+      filter: brightness(0) saturate(100%);
+      filter:
+        invert(6%) sepia(69%) saturate(2254%) hue-rotate(200deg)
+        brightness(94%) contrast(98%);
+    }
+  }
+
+  &--sm {
+    width: $icon-sm-x;
+    height: $icon-sm-y;
+  }
+
+  &--lg {
+    width: $icon-lg;
+    height: $icon-lg;
+  }
+}

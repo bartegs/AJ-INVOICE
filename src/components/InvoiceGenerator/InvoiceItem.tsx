@@ -3,8 +3,22 @@ import React from "react";
 import useWindowWidth from "../../hooks/useWindowWidth";
 
 import Input from "../Input";
+import Icon from "../Icon";
 
-export default function InvoiceItem(): JSX.Element {
+export interface InvoiceItemProps {
+  number?: number;
+  onRemove?: any;
+  id?: number;
+  invoiceItemsNumbers?: any;
+
+  index?: number;
+  serviceList?: any;
+}
+export default function InvoiceItem({
+  onRemove,
+  index,
+  serviceList,
+}: InvoiceItemProps): JSX.Element {
   const { width } = useWindowWidth();
 
   const [description, setDescription] = React.useState("");
@@ -14,7 +28,7 @@ export default function InvoiceItem(): JSX.Element {
 
   return (
     <div className="invoice-item">
-      <div className="invoice-item__number">1.</div>
+      <div className="invoice-item__number">{`${index + 1}.`}</div>
       <div className="invoice-item__inputs">
         <Input
           placeholder="Type description"
@@ -57,7 +71,17 @@ export default function InvoiceItem(): JSX.Element {
           additionalClasses={`${width < 768 && "mb-3"} `}
         />
       </div>
-      <div className="invoice-item__buttons"></div>
+      <div className="invoice-item__buttons">
+        <Icon icon="confirm" color="white" size="sm" additionalClasses="mr-2" />
+        {serviceList.length > 1 && index >= 0 && (
+          <Icon
+            icon="remove"
+            onClick={() => onRemove(index)}
+            color="white"
+            size="sm"
+          />
+        )}
+      </div>
     </div>
   );
 }
