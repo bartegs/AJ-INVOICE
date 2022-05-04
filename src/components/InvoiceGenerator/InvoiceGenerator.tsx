@@ -8,8 +8,11 @@ import Icon from "../Icon";
 
 import InvoiceItems from "./InvoiceItems";
 
+import { InvoiceItemInterface } from "./InvoiceItemInterface";
+
 export default function InvoiceGenerator(): JSX.Element {
   const { width } = useWindowWidth();
+
   const [invoiceName, setInvoiceName] = React.useState("");
   const [invoiceDate, setInvoiceDate] = React.useState("");
   const [customerFirstName, setCustomerFirstName] = React.useState("");
@@ -17,14 +20,68 @@ export default function InvoiceGenerator(): JSX.Element {
   const [customerPhone, setCustomerPhone] = React.useState("");
   const [customerEmail, setCustomerEmail] = React.useState("");
 
-  // function convertDigitIn(str) {
-  //   return str.split("/").reverse().join("/");
-  // }
+  const [invoiceItemsList, setInvoiceItemsList] = React.useState<
+    InvoiceItemInterface[]
+  >([
+    {
+      description: "",
+      unit: "item",
+      quantity: 1,
+      rate: "",
+      isConfirmed: false,
+      confirmedRate: 0,
+      confirmedQuantity: 1,
+    },
+  ]);
 
-  const [serviceList, setServiceList] = React.useState([{ service: "a" }]);
+  const [sum, setSum] = React.useState(0);
+
   const onNewBtnClick = () => {
-    setServiceList([...serviceList, { service: "" }]);
+    if (
+      parseFloat(invoiceItemsList[invoiceItemsList.length - 1].rate) > 0 &&
+      invoiceItemsList[invoiceItemsList.length - 1].isConfirmed === true
+    ) {
+      setInvoiceItemsList([
+        ...invoiceItemsList,
+        {
+          description: "",
+          unit: "item",
+          quantity: 1,
+          rate: "",
+          isConfirmed: false,
+          confirmedRate: 0,
+          confirmedQuantity: 1,
+        },
+      ]);
+    }
+    return sum;
   };
+
+  const reset = () => {
+    setInvoiceItemsList([
+      {
+        description: "",
+        unit: "item",
+        quantity: 1,
+        rate: "",
+        isConfirmed: false,
+        confirmedRate: 0,
+        confirmedQuantity: 1,
+      },
+    ]);
+
+    setSum(0);
+    setInvoiceName("");
+    setInvoiceDate("");
+    setCustomerFirstName("");
+    setCustomerLastName("");
+    setCustomerPhone("");
+    setCustomerEmail("");
+  };
+
+  const subTotal = sum;
+  const vat = subTotal * 0.2;
+  const total = sum + vat;
 
   return (
     <section className="content invoice-generator">
@@ -50,10 +107,10 @@ export default function InvoiceGenerator(): JSX.Element {
             underlineColor="blue"
             size="lg"
             type="text"
-            onFocus={(e: any) => {
+            onFocus={(e: React.ChangeEvent<HTMLInputElement>) => {
               e.target.type = "date";
             }}
-            onBlur={(e: any) => {
+            onBlur={(e: React.ChangeEvent<HTMLInputElement>) => {
               e.target.type = "text";
             }}
           />
@@ -101,8 +158,9 @@ export default function InvoiceGenerator(): JSX.Element {
           />
         </div>
         <InvoiceItems
-          serviceList={serviceList}
-          setServiceList={setServiceList}
+          serviceList={invoiceItemsList}
+          setServiceList={setInvoiceItemsList}
+          setSum={setSum}
         />
         <div
           role="button"
@@ -114,15 +172,15 @@ export default function InvoiceGenerator(): JSX.Element {
         <div className="invoice-generator__summary summary">
           <div className="summary__item">
             <span className="summary__name">SUBTOTAL:</span>
-            <span className="summary__value">£ 12030,00</span>
+            <span className="summary__value">{`£ ${sum.toFixed(2)}`}</span>
           </div>
           <div className="summary__item">
-            <span className="summary__name">VAT:</span>
-            <span className="summary__value">£ 2406,00</span>
+            <span className="summary__name">VAT(20%):</span>
+            <span className="summary__value">{`£ ${vat.toFixed(2)}`}</span>
           </div>
           <div className="summary__item">
             <span className="summary__name">TOTAL:</span>
-            <span className="summary__value">£ 14436,00</span>
+            <span className="summary__value">£ {total.toFixed(2)}</span>
           </div>
           <div className="invoice-generator__buttons">
             <Button
@@ -130,12 +188,12 @@ export default function InvoiceGenerator(): JSX.Element {
               type="reset"
               color="red"
               additionalClasses="mr-2 flex-2"
-              onClick={() => {}}
+              onClick={reset}
               isDisabled={false}
             ></Button>
             <Button
               text="Generate invoice"
-              type="submit"
+              type="button"
               color="blue"
               additionalClasses="flex-4"
               onClick={() => {}}

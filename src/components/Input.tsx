@@ -2,7 +2,9 @@ import React from "react";
 import classnames from "classnames";
 
 interface InputProps {
-  setState: React.Dispatch<React.SetStateAction<string>>;
+  setState?: React.Dispatch<React.SetStateAction<string>>;
+  handleValueChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+
   name: string;
   value: string | number;
   placeholder: string;
@@ -12,12 +14,13 @@ interface InputProps {
   underlineColor?: "blue" | "grey";
   size?: "sm" | "md" | "lg";
   type?: "text" | "date";
-  onFocus?: any;
-  onBlur?: any;
+  onFocus?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function Input({
   setState,
+  handleValueChange,
   name,
   value,
   placeholder,
@@ -30,13 +33,19 @@ export default function Input({
   onFocus,
   onBlur,
 }: InputProps): JSX.Element {
-  function handleValueChange(event: React.ChangeEvent<HTMLInputElement>) {
+  function internalHandleValueChange(
+    event: React.ChangeEvent<HTMLInputElement>
+  ) {
     setState(event.currentTarget.value);
   }
 
   return (
     <input
-      onChange={handleValueChange}
+      onChange={
+        handleValueChange !== undefined
+          ? handleValueChange
+          : internalHandleValueChange
+      }
       className={classnames(
         "input",
         `input--${size}`,

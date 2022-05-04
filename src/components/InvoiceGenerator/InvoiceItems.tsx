@@ -2,29 +2,29 @@ import React from "react";
 
 import InvoiceItem from "./InvoiceItem";
 
+import { InvoiceItemInterface } from "./InvoiceItemInterface";
+
 interface InvoiceItemsProps {
-  serviceList: any;
-  setServiceList: any;
+  serviceList: InvoiceItemInterface[];
+  setServiceList: React.Dispatch<React.SetStateAction<{}>>;
+  setSum: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export default function InvoiceItems({
   serviceList,
   setServiceList,
+  setSum,
 }: InvoiceItemsProps): JSX.Element {
-  const onRemoveBtnClick = (index: any) => {
-    const list = [...serviceList];
-    list.splice(index, 1);
-    setServiceList(list);
-  };
-
   return (
     <>
-      {serviceList.map((singleService: any, index: any) => (
+      {serviceList.map((singleService: InvoiceItemInterface, index: number) => (
         <InvoiceItem
-          serviceList={serviceList}
-          onRemove={onRemoveBtnClick}
           index={index}
+          serviceList={serviceList}
+          setServiceList={setServiceList}
+          singleService={singleService}
           key={index}
+          setSum={setSum}
         />
       ))}
     </>
