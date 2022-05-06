@@ -149,12 +149,12 @@ export default function InvoiceGenerator(): JSX.Element {
 
   // invoice items table headers
   const invoiceItemsHeaders: any = [
-    { name: "ID", width: 20, align: "center" },
+    { name: "ID", width: 18, align: "center" },
     { name: "Description", width: 110, align: "center" },
-    { name: "Unit", width: 30, align: "center" },
+    { name: "Unit", width: 28, align: "center" },
     { name: "Quantity", width: 31, align: "center" },
-    { name: "Rate", width: 31, align: "center" },
-    { name: "Tender", width: 31, align: "center" },
+    { name: "Rate", width: 33, align: "center" },
+    { name: "Tender", width: 33, align: "center" },
   ];
 
   // invoice items table
