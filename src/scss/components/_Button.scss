@@ -14,6 +14,17 @@
     color: white;
   }
 
+  &:disabled {
+    color: $grey;
+    border: 2px solid $grey;
+    cursor: not-allowed;
+
+    &:hover {
+      border: 2px solid $grey;
+      color: $grey;
+    }
+  }
+
   &--blue {
     border: 2px solid $blue;
     color: $blue;
